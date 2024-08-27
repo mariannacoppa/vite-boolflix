@@ -1,17 +1,23 @@
 <script>
 import AppHeader from './components/AppHeader.vue';
-import AppMain from './components/AppMain.vue';
-import AppMain from './components/AppMain.vue';
+import VideosList from './components/VideosList.vue';
+import DetailVideo from './components/DetailVideo.vue';
 export default {
     components: {
         AppHeader,
-        AppMain
+        VideosList,
+        DetailVideo
     }
 }
 </script>
 <template>
-    <AppHeader />
-    <AppMain />
+    <header>
+        <AppHeader />
+    </header>
+    <main>
+        <VideosList />
+        <DetailVideo />
+    </main>
 </template>
 <style lang="scss">
   @import './styles/generals.scss';
