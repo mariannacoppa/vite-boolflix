@@ -6,6 +6,16 @@ export default {
         return{
             store,
         }
+    },
+    created() {
+        this.getVideos();
+    },
+    methods: {
+        getVideos() {
+            axios.get(store.apiUrl).then((response) => {
+                store.videoList = response.data.data;
+            });
+        }
     }
 }
 </script>
