@@ -2,6 +2,8 @@
 import AppHeader from './components/AppHeader.vue';
 import VideosList from './components/VideosList.vue';
 import DetailVideo from './components/DetailVideo.vue';
+import { store } from './store';
+import axios from 'axios';
 export default {
     components: {
         AppHeader,

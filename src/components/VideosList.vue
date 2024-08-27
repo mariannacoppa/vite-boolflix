@@ -1,5 +1,6 @@
 <script>
 import { store } from '../store';
+import axios from 'axios';
 export default {
     data() {
         return{
@@ -10,7 +11,7 @@ export default {
 </script>
 <template>
     <div>
-        
+        video item
     </div>
 </template>
 <style lang="scss">
