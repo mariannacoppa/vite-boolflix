@@ -12,7 +12,7 @@ export default {
     },
     methods: {
         getVideos() {
-            axios.get(store.apiUrl).then((response) => {
+            axios.get(store.apiUrl+store.queryParam).then((response) => {
                 store.videoList = response.data.results;
             });
         }
@@ -21,7 +21,6 @@ export default {
 </script>
 <template>
     <div>
-        video item
         <div class="container">
             <div class="row-list">
                 <div class="col-20" v-for="video in store.videoList" :key="video.id">
@@ -29,6 +28,9 @@ export default {
                         <img :src="video.poster_path" alt="">
                         <h6>
                             {{ video.title }}
+                            {{ video.original_title }}
+                            {{ video.original_language }}
+                            {{ video.vote_average }}
                         </h6>
                     </div>
                 </div>
