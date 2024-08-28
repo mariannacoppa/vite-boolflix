@@ -12,8 +12,7 @@ export default {
     },
     methods: {
         searchVideos() {
-            // console.log(this.search);
-            if (this.search === '') {
+            if (this.search === '' || this.search == undefined) {
                 axios.get(store.apiUrl+store.queryParam).then((response) => {
                     store.videoList = response.data.results;
                 });

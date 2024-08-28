@@ -1,11 +1,16 @@
 <script>
 import { store } from '../store';
 import axios from 'axios';
+import vFlagIcons from 'v-flag-icons'
+import 'v-flag-icons/css/rectangular.min.css'
 export default {
     data() {
         return{
             store,
         }
+    },
+    components: {
+        vFlagIcons
     },
     created() {
         this.getVideos();
@@ -15,6 +20,23 @@ export default {
             axios.get(store.apiUrl+store.queryParam).then((response) => {
                 store.videoList = response.data.results;
             });
+        },
+        getLangIcons(langText) {
+              // Validate the input to be exactly two characters long and all alphabetic
+            if (!langText || langText.length !== 2 || !/^[a-zA-Z]+$/.test(langText)) {
+                return '🏳️'; // White Flag Emoji for unknown or invalid country codes
+            }
+
+            // Convert the country code to uppercase to match the regional indicator symbols
+            const code = langText.toUpperCase();
+            
+            // Calculate the offset for the regional indicator symbols
+            const offset = 127397;
+            
+            // Convert each letter in the country code to its corresponding regional indicator symbol
+            const flag = Array.from(code).map(letter => String.fromCodePoint(letter.charCodeAt(0) + offset)).join('');
+            
+            return flag;
         }
     }
 }
@@ -29,7 +51,8 @@ export default {
                         <h6>
                             {{ video.title }}
                             {{ video.original_title }}
-                            {{ video.original_language }}
+                            <!-- {{ getLangIcons(video.original_language) }} -->
+                            <vf-icon country="video.original_language"/>
                             {{ video.vote_average }}
                         </h6>
                     </div>
