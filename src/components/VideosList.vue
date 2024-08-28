@@ -13,7 +13,7 @@ export default {
     methods: {
         getVideos() {
             axios.get(store.apiUrl).then((response) => {
-                store.videoList = response.data.data;
+                store.videoList = response.data.results;
             });
         }
     }
